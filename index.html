@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Предварительный расчёт стоимости остекления | Glasster</title>
+    <link rel="stylesheet" href="calc.css">
+</head>
+<body>
+    <section class="constructor" id="constructor">
+        <div class="container">
+            <h2>Предварительный расчёт стоимости</h2>
+            
+            <form id="cstr-flow" class="cstr-form">
+                <!-- Шаг 1: Объект -->
+                <div class="cstr-step">
+                    <h3>Что будем остеклять?</h3>
+                    <div class="cstr-options">
+                        <label class="cstr-option">
+                            <input type="radio" name="objectType" value="terrace" checked>
+                            <span>Терраса / веранда</span>
+                        </label>
+                        <label class="cstr-option">
+                            <input type="radio" name="objectType" value="balcony">
+                            <span>Балкон / лоджия</span>
+                        </label>
+                        <label class="cstr-option">
+                            <input type="radio" name="objectType" value="gazebo">
+                            <span>Беседка</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Шаг 2: Форма проёма -->
+                <div class="cstr-step">
+                    <h3>Форма проёма</h3>
+                    <div class="cstr-options">
+                        <label class="cstr-option">
+                            <input type="radio" name="shape" value="straight" checked>
+                            <span>Прямой</span>
+                        </label>
+                        <label class="cstr-option">
+                            <input type="radio" name="shape" value="corner-l">
+                            <span>Угловой</span>
+                        </label>
+                        <label class="cstr-option">
+                            <input type="radio" name="shape" value="u-shape">
+                            <span>П-образный</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Шаг 3: Размеры -->
+                <div class="cstr-step">
+                    <h3>Размеры проёма (мм)</h3>
+                    <div class="cstr-dims">
+                        <div class="field">
+                            <label for="dim-length">Длина</label>
+                            <input type="range" id="dim-length" name="totalLengthMm" class="cstr-range" 
+                                   min="1000" max="10000" step="100" value="4200" data-out="length-out">
+                            <output id="length-out">4200 мм</output>
+                        </div>
+                        <div class="field">
+                            <label for="dim-height">Высота</label>
+                            <input type="range" id="dim-height" name="heightMm" class="cstr-range" 
+                                   min="1500" max="3500" step="50" value="2400" data-out="height-out">
+                            <output id="height-out">2400 мм</output>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Шаг 4: Система -->
+                <div class="cstr-step">
+                    <h3>Тип системы</h3>
+                    <div class="cstr-options">
+                        <label class="cstr-option">
+                            <input type="radio" name="systemOverride" value="" checked>
+                            <span>Нужна рекомендация</span>
+                        </label>
+                        <label class="cstr-option">
+                            <input type="radio" name="systemOverride" value="coupe">
+                            <span>Coupe (раздвижная)</span>
+                        </label>
+                        <label class="cstr-option">
+                            <input type="radio" name="systemOverride" value="7t">
+                            <span>7T (складная)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Шаг 5: Опции -->
+                <div class="cstr-step">
+                    <h3>Опции</h3>
+                    <div class="cstr-checkboxes">
+                        <label class="cstr-check">
+                            <input type="checkbox" name="options" value="plisse">
+                            <span>Сетка-плиссе</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Шаг 6: Тип стекла -->
+                <div class="cstr-step">
+                    <h3>Тип стекла</h3>
+                    <div class="cstr-options">
+                        <label class="cstr-option">
+                            <input type="radio" name="glassType" value="clear" checked>
+                            <span>Прозрачное</span>
+                        </label>
+                        <label class="cstr-option">
+                            <input type="radio" name="glassType" value="low-iron">
+                            <span>Просветлённое</span>
+                        </label>
+                        <label class="cstr-option">
+                            <input type="radio" name="glassType" value="tinted">
+                            <span>Тонированное</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Шаг 7: Услуги -->
+                <div class="cstr-step">
+                    <h3>Услуги</h3>
+                    <div class="cstr-checkboxes">
+                        <label class="cstr-check">
+                            <input type="checkbox" name="services" value="engineer-measure">
+                            <span>Выезд инженера для замера</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Результат и таблица -->
+            <aside class="cstr-result">
+                <div class="cstr-estimate">
+                    <p class="cstr-estimate-label">Предварительная стоимость:</p>
+                    <p class="cstr-estimate-amount" id="cstr-estimate-amount">—</p>
+                    <p class="cstr-estimate-disclaimer" id="cstr-estimate-disclaimer" hidden>
+                        Для этой геометрии нужен инженерный расчёт. Пришлите фото или план.
+                    </p>
+                </div>
+
+                <p class="cstr-recap-label">Что войдёт в заявку</p>
+                <table class="cstr-recap" aria-label="Параметры, которые войдут в заявку">
+                    <tbody id="cstr-params" aria-live="polite"></tbody>
+                </table>
+
+                <!-- Форма отправки -->
+                <form class="cstr-lead" id="lead-form" novalidate>
+                    <input type="hidden" name="objectType" id="cf-objectType" value="">
+                    <input type="hidden" name="shape" id="cf-shape" value="">
+                    <input type="hidden" name="dims" id="cf-dims" value="">
+                    <input type="hidden" name="system" id="cf-system" value="">
+                    <input type="hidden" name="timing" id="cf-timing" value="">
+                    <input type="hidden" name="glassType" id="cf-glass" value="">
+                    <input type="hidden" name="objectState" id="cf-objectState" value="">
+                    <input type="hidden" name="options" id="cf-options" value="">
+                    <input type="hidden" name="needsMeasure" id="cf-needs-measure" value="">
+                    <input type="hidden" name="services" id="cf-services" value="">
+                    <input type="hidden" name="intent" id="cf-intent" value="">
+                    <input type="hidden" name="summary" id="cf-summary" value="">
+
+                    <div class="field">
+                        <label for="ff-name">Имя</label>
+                        <input type="text" id="ff-name" name="name" autocomplete="name" required placeholder="Александр">
+                    </div>
+
+                    <div class="field">
+                        <label for="ff-email">Email</label>
+                        <input type="email" id="ff-email" name="email" autocomplete="email" required placeholder="alex@mail.ru">
+                    </div>
+
+                    <div class="field">
+                        <label for="ff-contact">Телефон</label>
+                        <input type="tel" id="ff-contact" name="contact" autocomplete="tel" required placeholder="+7 999 123-45-67">
+                    </div>
+
+                    <div class="field field--check">
+                        <input type="checkbox" id="ff-agree" name="agree" required>
+                        <label for="ff-agree">Согласен на обработку персональных данных</label>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary">Отправить расчёт</button>
+                </form>
+
+                <div class="cstr-success" id="lead-success" hidden>
+                    <h3>Заявка отправлена</h3>
+                    <p>Спасибо! Мы свяжемся с вами в ближайшее время.</p>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <script src="custom.js"></script>
+    <script src="calc.js"></script>
+</body>
+</html>
