@@ -1,197 +1,182 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Предварительный расчёт стоимости остекления | Glasster</title>
-    <link rel="stylesheet" href="calc.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Предварительный расчёт стоимости · Glasster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="calc.css" />
 </head>
 <body>
-    <section class="constructor" id="constructor">
-        <div class="container">
-            <h2>Предварительный расчёт стоимости</h2>
-            
-            <form id="cstr-flow" class="cstr-form">
-                <!-- Шаг 1: Объект -->
-                <div class="cstr-step">
-                    <h3>Что будем остеклять?</h3>
-                    <div class="cstr-options">
-                        <label class="cstr-option">
-                            <input type="radio" name="objectType" value="terrace" checked>
-                            <span>Терраса / веранда</span>
-                        </label>
-                        <label class="cstr-option">
-                            <input type="radio" name="objectType" value="balcony">
-                            <span>Балкон / лоджия</span>
-                        </label>
-                        <label class="cstr-option">
-                            <input type="radio" name="objectType" value="gazebo">
-                            <span>Беседка</span>
-                        </label>
-                    </div>
-                </div>
+  <header class="site-header">
+    <div class="site-header__bar">
+      <a class="brand" href="#constructor">
+        <span class="brand__mark" aria-hidden="true"><span></span></span>
+        GLASSTER
+      </a>
+      <a class="btn btn--ghost btn--sm" href="#price-factors">Из чего складывается цена</a>
+    </div>
+  </header>
 
-                <!-- Шаг 2: Форма проёма -->
-                <div class="cstr-step">
-                    <h3>Форма проёма</h3>
-                    <div class="cstr-options">
-                        <label class="cstr-option">
-                            <input type="radio" name="shape" value="straight" checked>
-                            <span>Прямой</span>
-                        </label>
-                        <label class="cstr-option">
-                            <input type="radio" name="shape" value="corner-l">
-                            <span>Угловой</span>
-                        </label>
-                        <label class="cstr-option">
-                            <input type="radio" name="shape" value="u-shape">
-                            <span>П-образный</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Шаг 3: Размеры -->
-                <div class="cstr-step">
-                    <h3>Размеры проёма (мм)</h3>
-                    <div class="cstr-dims">
-                        <div class="field">
-                            <label for="dim-length">Длина</label>
-                            <input type="range" id="dim-length" name="totalLengthMm" class="cstr-range" 
-                                   min="1000" max="10000" step="100" value="4200" data-out="length-out">
-                            <output id="length-out">4200 мм</output>
-                        </div>
-                        <div class="field">
-                            <label for="dim-height">Высота</label>
-                            <input type="range" id="dim-height" name="heightMm" class="cstr-range" 
-                                   min="1500" max="3500" step="50" value="2400" data-out="height-out">
-                            <output id="height-out">2400 мм</output>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Шаг 4: Система -->
-                <div class="cstr-step">
-                    <h3>Тип системы</h3>
-                    <div class="cstr-options">
-                        <label class="cstr-option">
-                            <input type="radio" name="systemOverride" value="" checked>
-                            <span>Нужна рекомендация</span>
-                        </label>
-                        <label class="cstr-option">
-                            <input type="radio" name="systemOverride" value="coupe">
-                            <span>Coupe (раздвижная)</span>
-                        </label>
-                        <label class="cstr-option">
-                            <input type="radio" name="systemOverride" value="7t">
-                            <span>7T (складная)</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Шаг 5: Опции -->
-                <div class="cstr-step">
-                    <h3>Опции</h3>
-                    <div class="cstr-checkboxes">
-                        <label class="cstr-check">
-                            <input type="checkbox" name="options" value="plisse">
-                            <span>Сетка-плиссе</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Шаг 6: Тип стекла -->
-                <div class="cstr-step">
-                    <h3>Тип стекла</h3>
-                    <div class="cstr-options">
-                        <label class="cstr-option">
-                            <input type="radio" name="glassType" value="clear" checked>
-                            <span>Прозрачное</span>
-                        </label>
-                        <label class="cstr-option">
-                            <input type="radio" name="glassType" value="low-iron">
-                            <span>Просветлённое</span>
-                        </label>
-                        <label class="cstr-option">
-                            <input type="radio" name="glassType" value="tinted">
-                            <span>Тонированное</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Шаг 7: Услуги -->
-                <div class="cstr-step">
-                    <h3>Услуги</h3>
-                    <div class="cstr-checkboxes">
-                        <label class="cstr-check">
-                            <input type="checkbox" name="services" value="engineer-measure">
-                            <span>Выезд инженера для замера</span>
-                        </label>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Результат и таблица -->
-            <aside class="cstr-result">
-                <div class="cstr-estimate">
-                    <p class="cstr-estimate-label">Предварительная стоимость:</p>
-                    <p class="cstr-estimate-amount" id="cstr-estimate-amount">—</p>
-                    <p class="cstr-estimate-disclaimer" id="cstr-estimate-disclaimer" hidden>
-                        Для этой геометрии нужен инженерный расчёт. Пришлите фото или план.
-                    </p>
-                </div>
-
-                <p class="cstr-recap-label">Что войдёт в заявку</p>
-                <table class="cstr-recap" aria-label="Параметры, которые войдут в заявку">
-                    <tbody id="cstr-params" aria-live="polite"></tbody>
-                </table>
-
-                <!-- Форма отправки -->
-                <form class="cstr-lead" id="lead-form" novalidate>
-                    <input type="hidden" name="objectType" id="cf-objectType" value="">
-                    <input type="hidden" name="shape" id="cf-shape" value="">
-                    <input type="hidden" name="dims" id="cf-dims" value="">
-                    <input type="hidden" name="system" id="cf-system" value="">
-                    <input type="hidden" name="timing" id="cf-timing" value="">
-                    <input type="hidden" name="glassType" id="cf-glass" value="">
-                    <input type="hidden" name="objectState" id="cf-objectState" value="">
-                    <input type="hidden" name="options" id="cf-options" value="">
-                    <input type="hidden" name="needsMeasure" id="cf-needs-measure" value="">
-                    <input type="hidden" name="services" id="cf-services" value="">
-                    <input type="hidden" name="intent" id="cf-intent" value="">
-                    <input type="hidden" name="summary" id="cf-summary" value="">
-
-                    <div class="field">
-                        <label for="ff-name">Имя</label>
-                        <input type="text" id="ff-name" name="name" autocomplete="name" required placeholder="Александр">
-                    </div>
-
-                    <div class="field">
-                        <label for="ff-email">Email</label>
-                        <input type="email" id="ff-email" name="email" autocomplete="email" required placeholder="alex@mail.ru">
-                    </div>
-
-                    <div class="field">
-                        <label for="ff-contact">Телефон</label>
-                        <input type="tel" id="ff-contact" name="contact" autocomplete="tel" required placeholder="+7 999 123-45-67">
-                    </div>
-
-                    <div class="field field--check">
-                        <input type="checkbox" id="ff-agree" name="agree" required>
-                        <label for="ff-agree">Согласен на обработку персональных данных</label>
-                    </div>
-
-                    <button type="submit" class="btn btn--primary">Отправить расчёт</button>
-                </form>
-
-                <div class="cstr-success" id="lead-success" hidden>
-                    <h3>Заявка отправлена</h3>
-                    <p>Спасибо! Мы свяжемся с вами в ближайшее время.</p>
-                </div>
-            </aside>
-        </div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Конструктор · Coupe и 7T</p>
+        <h1>Предварительный расчёт стоимости</h1>
+        <p class="lead">
+          Ответьте на несколько вопросов о проёме. Мы покажем форму остекления,
+          подходящую систему Coupe или 7T и предварительную цену.
+          Точную стоимость можно будет получить после выезда на объект инженера.
+        </p>
+      </div>
     </section>
 
-    <script src="custom.js"></script>
-    <script src="calc.js"></script>
+    <section id="constructor">
+      <div class="container">
+        <div class="cstr-panel">
+          <div class="cstr-panel-inner">
+            <div class="cstr-stage">
+              <figure class="cstr-photo-wrap">
+                <div id="cstr-photo" class="cstr-photo" role="img" aria-label="Эскиз остекления"></div>
+                <figcaption id="cstr-photo-cap" class="cstr-photo-cap">
+                  Архитектурный эскиз: терраса / веранда с безрамным остеклением
+                </figcaption>
+              </figure>
+              <div>
+                <p class="eyebrow">Ориентир</p>
+                <div id="cstr-result" class="cstr-result">
+                  <p id="cstr-estimate-amount" class="cstr-estimate-amount">Ориентир: от 262&nbsp;080&nbsp;₽</p>
+                  <p id="cstr-estimate-disclaimer" class="cstr-estimate-disclaimer"></p>
+                  <p id="cstr-meta" class="cstr-meta"></p>
+                  <details id="cstr-limits" class="cstr-limits" hidden>
+                    <summary class="cstr-limit-chip" id="cstr-limit-label">Есть ограничение</summary>
+                    <ul id="cstr-flags" class="cstr-flags"></ul>
+                  </details>
+                </div>
+              </div>
+            </div>
+
+            <form id="cstr-flow"></form>
+
+            <div class="cstr-send">
+              <div>
+                <p class="cstr-recap-label">Что войдёт в заявку</p>
+                <table class="cstr-recap">
+                  <tbody id="cstr-params"></tbody>
+                </table>
+              </div>
+
+              <form id="lead-form" class="cstr-lead" data-leadform>
+                <div class="field">
+                  <label for="ff-name">Имя</label>
+                  <input id="ff-name" name="name" type="text" autocomplete="name" />
+                </div>
+                <div class="field">
+                  <label for="ff-contact">Телефон или Telegram <span class="field__req">*</span></label>
+                  <input id="ff-contact" name="contact" type="text" autocomplete="tel" required />
+                  <span class="field__err" hidden>Укажите телефон или Telegram — так мы сможем ответить.</span>
+                </div>
+                <div class="field">
+                  <label for="ff-email">Email</label>
+                  <input id="ff-email" name="email" type="email" autocomplete="email" />
+                </div>
+                <div class="cstr-attach">
+                  <p class="cstr-attach-title">Прикрепить фото или план</p>
+                  <label class="btn btn--ghost btn--sm cstr-attach-btn">
+                    Загрузить
+                    <input id="ff-file" type="file" hidden multiple accept="image/*,.pdf" data-file-input />
+                  </label>
+                  <span id="ff-file-name" class="cstr-attach-name"></span>
+                </div>
+                <label class="field--check">
+                  <input type="checkbox" required />
+                  <span>Согласен на обработку персональных данных</span>
+                </label>
+                <button type="submit" class="btn btn--primary">Отправить расчёт</button>
+              </form>
+
+              <div id="lead-success" class="cstr-success" hidden tabindex="-1">
+                <h3>Заявка принята</h3>
+                <p>Мы получили параметры проёма. Инженер свяжется с вами и уточнит детали. С фото проёма ответим быстрее.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="price-factors">
+      <div class="container">
+        <h3>Из чего складывается цена</h3>
+        <div class="cstr-price">
+          <span class="cstr-price__term"><b>Площадь</b><span>м² проёма</span></span>
+          <span class="cstr-price__op">×</span>
+          <span class="cstr-price__term"><b>Ставка м²</b><span>система и стекло</span></span>
+          <span class="cstr-price__op">+</span>
+          <span class="cstr-price__term"><b>Монтаж</b><span>по объекту</span></span>
+          <span class="cstr-price__op">+</span>
+          <span class="cstr-price__term"><b>Доставка</b><span>по России</span></span>
+          <span class="cstr-price__op">+</span>
+          <span class="cstr-price__term"><b>Дополнения</b><span>по работам и материалам</span></span>
+          <span class="cstr-price__op">=</span>
+          <span class="cstr-price__term cstr-price__term--result"><b>Реальная цена</b><span>после замера и согласования</span></span>
+        </div>
+        <dl class="cstr-price__drivers sys-specs">
+          <div class="sys-specs__row"><dt>В ставку м² входит</dt><dd>Профиль с покраской, закалённое стекло, фурнитура, уплотнители, крепёж, изготовление.</dd></div>
+          <div class="sys-specs__row"><dt>Ставку м² меняют</dt><dd>Система Coupe или 7T, форма проёма, тип стекла.</dd></div>
+          <div class="sys-specs__row"><dt>Монтаж зависит от</dt><dd>Формы и геометрии проёма: углов, перепадов, примыканий.</dd></div>
+          <div class="sys-specs__row"><dt>Доп. работы</dt><dd>Например, при проёмах сложной формы, проёмах с глухим остеклением. Стыки и переходы требуют дополнительного профиля.</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      Ориентир не является публичной офертой. Точную смету инженер называет после замера.
+      Ставка от 26&nbsp;000&nbsp;₽/м². Файлы калькулятора: <code>index.html</code>, <code>calc.js</code>, <code>custom.js</code>, <code>calc.css</code>.
+    </div>
+  </footer>
+
+  <dialog id="glass-types-dialog" class="info-dialog">
+    <div class="info-dialog__inner">
+      <button type="button" class="info-dialog__close" data-info-close aria-label="Закрыть">✕</button>
+      <div class="info-dialog__body">
+        <h3 class="info-dialog__title">Сравнение типов стекла</h3>
+        <p>Тип стекла меняет вид и светопропускание. На ориентир цены в калькуляторе не влияет — ставку уточняем в смете.</p>
+        <ul class="glass-compare">
+          <li><i class="glass-swatch glass-swatch--clear"></i><div><b class="glass-compare__name">Прозрачное</b><p>Стандартное закалённое стекло.</p></div></li>
+          <li><i class="glass-swatch glass-swatch--low"></i><div><b class="glass-compare__name">Просветлённое</b><p>Почти белая кромка, цвет за стеклом не уходит в зелень.</p></div></li>
+          <li><i class="glass-swatch glass-swatch--tint"></i><div><b class="glass-compare__name">Тонированное в массе</b><p>Снижает яркость и нагрев.</p></div></li>
+          <li><i class="glass-swatch glass-swatch--frost"></i><div><b class="glass-compare__name">Матовое</b><p>Свет проходит, детали скрыты.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="plisse-dialog" class="info-dialog">
+    <div class="info-dialog__inner">
+      <button type="button" class="info-dialog__close" data-info-close aria-label="Закрыть">✕</button>
+      <div class="info-dialog__body">
+        <h3 class="info-dialog__title">Москитная сетка-плиссе</h3>
+        <p>Выдвижная сетка-гармошка. Когда не нужна, складывается в боковой профиль и не видна. Совместимость с конфигурацией подтверждаем по проекту.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="mobile-office-dialog" class="info-dialog">
+    <div class="info-dialog__inner">
+      <button type="button" class="info-dialog__close" data-info-close aria-label="Закрыть">✕</button>
+      <div class="info-dialog__body">
+        <h3 class="info-dialog__title">Выезд инженера с макетами</h3>
+        <p>Инженер приезжает с образцами профиля, стекла и фурнитуры. Можно увидеть цвет, ход створки и узлы до договора.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="custom.js"></script>
+  <script src="calc.js"></script>
 </body>
 </html>
